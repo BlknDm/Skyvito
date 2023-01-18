@@ -6,17 +6,21 @@ def converter(csv_file, json_file, model):
     result = []
     with open(csv_file, encoding='utf-8') as csv_file:
         for row in csv.DictReader(csv_file):
-            record = {"model": model, "pk": row["Id"]}
-            del row["Id"]
+            record = {"model": model, "pk": row["id"]}
+            del row["id"]
 
             if "price" in row:
                 row["price"] = int(row["price"])
 
             if "is_published" in row:
-                if row["is_published"] == 'True':
+                if row["is_published"] == 'TRUE':
                     row["is_published"] = True
                 else:
                     row["is_published"] = False
+            if "location_id" in row:
+                row['location'] = [row["location_id"]]
+                del row['location_id']
+
 
             record["fields"] = row
             result.append(record)
@@ -25,5 +29,7 @@ def converter(csv_file, json_file, model):
         json_file.write(json.dumps(result, ensure_ascii=False))
 
 
-converter('categories.csv', 'categories.json', 'ads.categories')
-converter('ads.csv', 'ads.json', 'ads.ads')
+converter('datasets/ad.csv', 'ads.json', 'ads.ad')
+# converter('datasets/category.csv', 'category.json', 'ads.category')
+# converter('datasets/location.csv', 'location.json', 'users.location')
+# converter('datasets/user.csv', 'user.json', 'users.user')
