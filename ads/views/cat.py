@@ -39,7 +39,7 @@ class CategoryCreateView(CreateView):
     fields = "__all__"
 
     def post(self, request, *args, **kwargs):
-        ad_data = json.loads(request.body)
+        data = json.loads(request.body)
         new_cat = Category.objects.create(
             name=data["name"],
         )

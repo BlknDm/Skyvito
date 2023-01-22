@@ -1,16 +1,14 @@
 import json
 
-from django.conf import settings
-from django.http import JsonResponse
-from django.utils.decorators import method_decorator
-from django.views import View
-from django.views.decorators.csrf import csrf_exempt
 from django.core.paginator import Paginator
-from django.db.models import Count, Avg
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import DetailView, CreateView, ListView, DeleteView, UpdateView
 
 from ads.models import Ad, Category
 from users.models import User
-from django.views.generic import DetailView, CreateView, ListView, DeleteView, UpdateView
 
 TOTAL_ON_PAGE = 4
 

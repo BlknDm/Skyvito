@@ -1,6 +1,6 @@
 from django.db import models
 
-#id,name,author_id,price,description,is_published,image,category_id
+
 class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
 
