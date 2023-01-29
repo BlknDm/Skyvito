@@ -7,6 +7,7 @@ from ads.views.ad import AdImageUpload, AdViewSet
 router = routers.SimpleRouter()
 router.register('', AdViewSet)
 
+
 urlpatterns = [
     path('<int:pk>/upload_image/', AdImageUpload.as_view())
 ]

@@ -23,9 +23,11 @@ import ads
 from ads.views.ad import *
 from ads.views.cat import *
 from users.views import *
+from ads.views.selection import SelectionViewSet
 
 router = routers.SimpleRouter()
 router.register('location', LocationViewSet)
+router.register('selection', SelectionViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
