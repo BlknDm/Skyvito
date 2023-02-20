@@ -19,7 +19,8 @@ class AdViewSet(ModelViewSet):
     default_serializer = AdSerializer
     serializer_classes = {
         'retrieve': AdDetailSerializer,
-        'list': AdListSerializer
+        'list': AdListSerializer,
+        'create': AdCreateSerializer
     }
 
     default_permission = [AllowAny()]
